@@ -23,17 +23,21 @@ public class QuickSort {
             while (arr[j]>key&&i<j){
                 j--;
             }
+            if(i<j){
+            arr[i]=arr[j];
+                i++;
+            }
             //从左向右循环，当arr[left]>key 退出循环
             while (arr[i]<key&&i<j) {
                 i++;
             }
-            //swap left and right
-            if (i<=j){
-                temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
+            if(i<j){
+               arr[j]=arr[i];
+                j--;
             }
-        }
+       }
+        //分割位i 此时 i ==j
+        arr[i] = key;
         if (i-1>left) {
             quicksort(arr,left,i-1);
         }
